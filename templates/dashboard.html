@@ -33,13 +33,13 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'reg_app:home' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Course Regestration</a>
+                <a class="nav-link" href="{% url 'reg_app:course_registration' %}">Course Regestration</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="#">DashBoard</a>
+                <a class="nav-link " href="{% url 'reg_app:dashboard' %}">DashBoard</a>
             </li>
         </ul>
 
@@ -189,10 +189,6 @@
                 </tbody>
             </table>
 
-
-            <div class="d-flex justify-content-center pt-3">
-                <button type="button" class="btn btn-lg btn-warning">Submit</button>
-            </div>
 
 
         </div>

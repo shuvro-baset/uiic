@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
@@ -35,13 +37,13 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'reg_app:home' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Course Regestration</a>
+                <a class="nav-link" href="{% url 'reg_app:course_registration' %}">Course Regestration</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="#">DashBoard</a>
+                <a class="nav-link " href="{% url 'reg_app:dashboard' %}">DashBoard</a>
             </li>
         </ul>
 
@@ -53,7 +55,10 @@
             <div class="col-12 justify-content-center">
                 <div class="col-6 float-left">
                     <div class="d-flex justify-content-center pt-5">
-                        <button type="button" class="btn btn-lg btn-primary">Course Registration</button>
+                        <a href="{% url 'reg_app:course_registration' %}">
+                            <button type="button" class="btn btn-lg btn-primary">Course Registration</button>
+                        </a>
+
                     </div>
                     <div class="d-flex justify-content-center pt-5">
                         <button type="button" class="btn btn-lg btn-success">Add/Drop</button>
@@ -73,7 +78,10 @@
                         <button type="button" class="btn btn-lg btn-danger">Course Status</button>
                     </div>
                     <div class="d-flex justify-content-center pt-5">
-                        <button type="button" class="btn btn-lg btn-warning">Profile</button>
+                        <a href="{% url 'reg_app:dashboard' %}">
+                            <button type="button" class="btn btn-lg btn-warning">Profile</button>
+                        </a>
+
                     </div>
                     <div class="d-flex justify-content-center pt-5">
                         <button type="button" class="btn btn-lg btn-dark">Logout</button>
