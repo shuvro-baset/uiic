@@ -1,10 +1,16 @@
 from django.forms import ModelForm
 from django import forms
 
-from .models import Student
+from .models import Student, CourseRegistration
 
 
 class CreateStuForm(ModelForm):
     class Meta:
         model = Student
-        fields = ['st_id','password',]
+        fields = ['st_id', 'password', ]
+
+
+class CourseRegForm(ModelForm):
+    class Meta:
+        model = CourseRegistration
+        fields = ['stu_name', 'st_id', 'stu_type', 'department', 'semester', 'semester_name', 'credit', ]

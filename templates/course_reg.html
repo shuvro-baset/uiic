@@ -51,12 +51,13 @@
     <div class="container pt-5">
         <div class="row">
             <div class="col-12">
-                <form>
+                <form action="{% url 'reg_app:course_registration' %}" method="post">
+                    {% csrf_token %}
                     <div class="form-group row">
                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Student
                             Name:</label>
                         <div class="col-sm-6">
-                            <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
+                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="stu_name"
                                    placeholder="Student Name">
                         </div>
                     </div>
@@ -74,7 +75,7 @@
                         <div class="col-sm-6">
                             <select name="" id="">
                                 <option value="regular">Regular</option>
-                                <option value="iregular">Iregular</option>
+                                <option value="iregular">Retake</option>
                             </select>
                         </div>
                     </div>
@@ -110,6 +111,124 @@
                                    placeholder="Total Taken Credit">
                         </div>
                     </div>
+
+
+                    <div class="col-12">
+                        <h2>Course Information</h2>
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Sl No</th>
+                                <th scope="col">Course Name</th>
+                                <th scope="col">Course Code</th>
+                                <th scope="col">Credit Hours</th>
+                                <th scope="col">Sub Selection</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Chemistry</td>
+                                <td>CHEM-2301</td>
+                                <td class="text-center">3</td>
+                                <td class="text-center"><input class="form-check-input" type="checkbox"
+                                                               id="inlineCheckbox1" name="subjects"
+                                                               value="Chemistry"></td>
+                                <td><select name="che_status" id="">
+                                    <option value="regular">Regular</option>
+                                    <option value="iregular">Retake</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Computer Programing lab-1</td>
+                                <td>CSE-1122</td>
+                                <td class="text-center">1.5</td>
+                                <td class="text-center"><input class="form-check-input" type="checkbox"
+                                                               id="inlineCheckbox1" name="subjects"
+                                                               value="Computer Programing lab-1"></td>
+                                <td><select name="prg_status" id="">
+                                    <option value="regular">Regular</option>
+                                    <option value="iregular">Retake</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Sciences of Quran Hadith</td>
+                                <td>URED-2302</td>
+                                <td class="text-center">1</td>
+                                <td class="text-center"><input class="form-check-input" type="checkbox"
+                                                               id="inlineCheckbox1"
+                                                               value="option1"></td>
+                                <td><select name="" id="">
+                                    <option value="regular">Regular</option>
+                                    <option value="iregular">Retake</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>Data Structure</td>
+                                <td>cse-2321</td>
+                                <td class="text-center">3</td>
+                                <td class="text-center"><input class="form-check-input" type="checkbox"
+                                                               id="inlineCheckbox1"
+                                                               value="option1"></td>
+                                <td><select name="" id="">
+                                    <option value="regular">Regular</option>
+                                    <option value="iregular">Retake</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>Data Structure lab</td>
+                                <td>cse-2322</td>
+                                <td class="text-center">1</td>
+                                <td class="text-center"><input class="form-check-input" type="checkbox"
+                                                               id="inlineCheckbox1"
+                                                               value="option1"></td>
+                                <td><select name="" id="">
+                                    <option value="regular">Regular</option>
+                                    <option value="iregular">Retake</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">6</th>
+                                <td>Digital Logic Design</td>
+                                <td>cse-2323</td>
+                                <td class="text-center">3</td>
+                                <td class="text-center"><input class="form-check-input" type="checkbox"
+                                                               id="inlineCheckbox1"
+                                                               value="option1"></td>
+                                <td><select name="" id="">
+                                    <option value="regular">Regular</option>
+                                    <option value="iregular">Retake</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7</th>
+                                <td>Digital Logic Design lab</td>
+                                <td>cse-2324</td>
+                                <td class="text-center">1.5</td>
+                                <td class="text-center"><input class="form-check-input" type="checkbox"
+                                                               id="inlineCheckbox1"
+                                                               value="option1"></td>
+                                <td><select name="" id="">
+                                    <option value="regular">Regular</option>
+                                    <option value="iregular">Retake</option>
+                                </select></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+                        <div class="d-flex justify-content-center pt-3">
+                            <button type="submit" class="btn btn-lg btn-warning">Submit</button>
+                        </div>
+
+
+                    </div>
                 </form>
             </div>
 
@@ -120,114 +239,6 @@
 
 <div class="container pt-5">
     <div class="row">
-        <div class="col-12">
-            <h2>Course Information</h2>
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Sl No</th>
-                    <th scope="col">Course Name</th>
-                    <th scope="col">Course Code</th>
-                    <th scope="col">Credit Hours</th>
-                    <th scope="col">Sub Selection</th>
-                    <th scope="col">Status</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Chemistry</td>
-                    <td>CHEM-2301</td>
-                    <td class="text-center">3</td>
-                    <td class="text-center"><input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                   value="option1"></td>
-                    <td><select name="" id="">
-                                <option value="regular">Regular</option>
-                                <option value="iregular">Retake</option>
-                            </select></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Computer Programing lab-1</td>
-                    <td>CSE-1122</td>
-                    <td class="text-center">1.5</td>
-                    <td class="text-center"><input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                   value="option1"></td>
-                    <td><select name="" id="">
-                                <option value="regular">Regular</option>
-                                <option value="iregular">Retake</option>
-                            </select></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Sciences of Quran Hadith</td>
-                    <td>URED-2302</td>
-                    <td class="text-center">1</td>
-                    <td class="text-center"><input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                   value="option1"></td>
-                    <td><select name="" id="">
-                                <option value="regular">Regular</option>
-                                <option value="iregular">Retake</option>
-                            </select></td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Data Structure</td>
-                    <td>cse-2321</td>
-                    <td class="text-center">3</td>
-                    <td class="text-center"><input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                   value="option1"></td>
-                    <td><select name="" id="">
-                                <option value="regular">Regular</option>
-                                <option value="iregular">Retake</option>
-                            </select></td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Data Structure lab</td>
-                    <td>cse-2322</td>
-                    <td class="text-center">1</td>
-                    <td class="text-center"><input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                   value="option1"></td>
-                    <td><select name="" id="">
-                                <option value="regular">Regular</option>
-                                <option value="iregular">Retake</option>
-                            </select></td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Digital Logic Design</td>
-                    <td>cse-2323</td>
-                    <td class="text-center">3</td>
-                    <td class="text-center"><input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                   value="option1"></td>
-                    <td><select name="" id="">
-                                <option value="regular">Regular</option>
-                                <option value="iregular">Retake</option>
-                            </select></td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>Digital Logic Design lab</td>
-                    <td>cse-2324</td>
-                    <td class="text-center">1.5</td>
-                    <td class="text-center"><input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                   value="option1"></td>
-                    <td><select name="" id="">
-                                <option value="regular">Regular</option>
-                                <option value="iregular">Retake</option>
-                            </select></td>
-                </tr>
-                </tbody>
-            </table>
-
-
-            <div class="d-flex justify-content-center pt-3">
-                <button type="button" class="btn btn-lg btn-warning">Submit</button>
-            </div>
-
-
-        </div>
 
 
     </div>

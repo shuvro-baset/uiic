@@ -97,25 +97,25 @@
                 <form method="POST" action="">
                     {% csrf_token %}
                     {{ form }}
-                    {% for stu in students %}
+
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" name="stu.st_id" placeholder="Enter your id" class="form-control">
+                        <input type="text" name="st_id" placeholder="Enter your id" class="form-control">
                     </div>
 
                     <div class="input-group mb-2">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" name="stu.password" placeholder="Password..." class="form-control">
+                        <input type="password" name="password" placeholder="Password..." class="form-control">
                     </div>
 
                     <div class="d-flex justify-content-center mt-3 login_container">
                         <input class="btn login_btn" type="submit" value="Login">
                     </div>
-                    {% endfor %)
+
                 </form>
 
             </div>
