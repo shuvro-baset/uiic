@@ -65,7 +65,7 @@
                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Student
                             Id:</label>
                         <div class="col-sm-6">
-                            <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
+                            <input type="text" class="form-control form-control-sm" min="6" max="6" id="colFormLabelSm" name="st_id"
                                    placeholder="Student Id">
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Student
                             Type:</label>
                         <div class="col-sm-6">
-                            <select name="" id="">
+                            <select name="stu_type" id="">
                                 <option value="regular">Regular</option>
                                 <option value="iregular">Retake</option>
                             </select>
@@ -83,7 +83,7 @@
                         <label for="colFormLabelSm"
                                class="col-sm-2 col-form-label col-form-label-sm">Department:</label>
                         <div class="col-sm-6">
-                            <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
+                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="department"
                                    placeholder="Department">
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Semester
                             Enrolled:</label>
                         <div class="col-sm-6">
-                            <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
+                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="semester"
                                    placeholder="Semester Enrolled">
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Semester
                             Name: </label>
                         <div class="col-sm-6">
-                            <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
+                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="semester_name"
                                    placeholder="col-form-label-sm">
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Total Taken
                             Credit:</label>
                         <div class="col-sm-6">
-                            <input type="email" class="form-control form-control-sm" id="colFormLabelSm"
+                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="credit"
                                    placeholder="Total Taken Credit">
                         </div>
                     </div>
@@ -160,9 +160,9 @@
                                 <td>URED-2302</td>
                                 <td class="text-center">1</td>
                                 <td class="text-center"><input class="form-check-input" type="checkbox"
-                                                               id="inlineCheckbox1"
-                                                               value="option1"></td>
-                                <td><select name="" id="">
+                                                               id="inlineCheckbox1" name="subjects"
+                                                               value="Sciences of Quran Hadith"></td>
+                                <td><select name="sqd_status" id="">
                                     <option value="regular">Regular</option>
                                     <option value="iregular">Retake</option>
                                 </select></td>
@@ -173,9 +173,9 @@
                                 <td>cse-2321</td>
                                 <td class="text-center">3</td>
                                 <td class="text-center"><input class="form-check-input" type="checkbox"
-                                                               id="inlineCheckbox1"
-                                                               value="option1"></td>
-                                <td><select name="" id="">
+                                                               id="inlineCheckbox1" name="subjects"
+                                                               value="Data Structure"></td>
+                                <td><select name="ds_status" id="">
                                     <option value="regular">Regular</option>
                                     <option value="iregular">Retake</option>
                                 </select></td>
@@ -186,9 +186,9 @@
                                 <td>cse-2322</td>
                                 <td class="text-center">1</td>
                                 <td class="text-center"><input class="form-check-input" type="checkbox"
-                                                               id="inlineCheckbox1"
-                                                               value="option1"></td>
-                                <td><select name="" id="">
+                                                               id="inlineCheckbox1" name="subjects"
+                                                               value="Data Structure lab"></td>
+                                <td><select name="dsl_status" id="">
                                     <option value="regular">Regular</option>
                                     <option value="iregular">Retake</option>
                                 </select></td>
@@ -199,9 +199,9 @@
                                 <td>cse-2323</td>
                                 <td class="text-center">3</td>
                                 <td class="text-center"><input class="form-check-input" type="checkbox"
-                                                               id="inlineCheckbox1"
-                                                               value="option1"></td>
-                                <td><select name="" id="">
+                                                               id="inlineCheckbox1" name="subjects"
+                                                               value="Digital Logic Design"></td>
+                                <td><select name="dld_status" id="">
                                     <option value="regular">Regular</option>
                                     <option value="iregular">Retake</option>
                                 </select></td>
@@ -212,9 +212,9 @@
                                 <td>cse-2324</td>
                                 <td class="text-center">1.5</td>
                                 <td class="text-center"><input class="form-check-input" type="checkbox"
-                                                               id="inlineCheckbox1"
-                                                               value="option1"></td>
-                                <td><select name="" id="">
+                                                               id="inlineCheckbox1" name="subjects"
+                                                               value="Digital Logic Design lab"></td>
+                                <td><select name="dldl_status" id="">
                                     <option value="regular">Regular</option>
                                     <option value="iregular">Retake</option>
                                 </select></td>
