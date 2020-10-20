@@ -55,49 +55,49 @@
                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Student
                             Name:</label>
                         <div class="col-sm-6">
-                            <h3>Code Breaker </h3>
+                            <h3>{{ stu_ins.stu_name}} </h3>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Student
                             Id:</label>
                         <div class="col-sm-6">
-                            <h3>011130256</h3>
+                            <h3>{{ stu_ins.stu_id }}</h3>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Student
                             Type:</label>
                         <div class="col-sm-6">
-                            <h3>Regular</h3>
+                            <h3>{{ stu_ins.stu_type }}</h3>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="colFormLabelSm"
                                class="col-sm-2 col-form-label col-form-label-sm">Department:</label>
                         <div class="col-sm-6">
-                            <h3>Computer Science & Engineering</h3>
+                            <h3>{{ stu_ins.department }}</h3>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Semester
                             Enrolled:</label>
                         <div class="col-sm-6">
-                            <h3>3rd</h3>
+                            <h3>{{ stu_ins.semester }}</h3>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Semester
                             Name: </label>
                         <div class="col-sm-6">
-                            <h3></h3>
+                            <h3>{{ stu_ins.semester_name }}</h3>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Total Taken
                             Credit:</label>
                         <div class="col-sm-6">
-                            <h3>12</h3>
+                            <h3>{{ stu_ins.credit }}</h3>
                         </div>
                     </div>
             </div>
@@ -123,69 +123,71 @@
                 </tr>
                 </thead>
                 <tbody>
+                {% for enroll in enroll_ins %}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Chemistry</td>
-                    <td>CHEM-2301</td>
-                    <td class="text-center">3</td>
+                    <th scope="row">{{ enroll.count }}</th>
+                    <td>{{ enroll.course_name }}</td>
+                    <td>{{ enroll.course_code }}</td>
+                    <td class="text-center">{{ enroll.credit_hour }}</td>
 
+                    <td>{{ enroll.status }}</td>
                     <td></td>
-                    <td>Pending</td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Computer Programing lab-1</td>
-                    <td>CSE-1122</td>
-                    <td class="text-center">1.5</td>
-
-                    <td></td>
-                    <td>Pending</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Sciences of Quran Hadith</td>
-                    <td>URED-2302</td>
-                    <td class="text-center">1</td>
-
-                    <td></td>
-                    <td>Pending</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Data Structure</td>
-                    <td>cse-2321</td>
-                    <td class="text-center">3</td>
-
-                    <td></td>
-                    <td>Pending</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Data Structure lab</td>
-                    <td>cse-2322</td>
-                    <td class="text-center">1</td>
-
-                    <td></td>
-                    <td>Pending</td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Digital Logic Design</td>
-                    <td>cse-2323</td>
-                    <td class="text-center">3</td>
-
-                    <td></td>
-                    <td>Pending</td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>Digital Logic Design lab</td>
-                    <td>cse-2324</td>
-                    <td class="text-center">1.5</td>
-
-                    <td></td>
-                    <td>Pending</td>
-                </tr>
+                {% endfor %}
+{#                <tr>#}
+{#                    <th scope="row">2</th>#}
+{#                    <td>Computer Programing lab-1</td>#}
+{#                    <td>CSE-1122</td>#}
+{#                    <td class="text-center">1.5</td>#}
+{##}
+{#                    <td></td>#}
+{#                    <td>Pending</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <th scope="row">3</th>#}
+{#                    <td>Sciences of Quran Hadith</td>#}
+{#                    <td>URED-2302</td>#}
+{#                    <td class="text-center">1</td>#}
+{##}
+{#                    <td></td>#}
+{#                    <td>Pending</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <th scope="row">4</th>#}
+{#                    <td>Data Structure</td>#}
+{#                    <td>cse-2321</td>#}
+{#                    <td class="text-center">3</td>#}
+{##}
+{#                    <td></td>#}
+{#                    <td>Pending</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <th scope="row">5</th>#}
+{#                    <td>Data Structure lab</td>#}
+{#                    <td>cse-2322</td>#}
+{#                    <td class="text-center">1</td>#}
+{##}
+{#                    <td></td>#}
+{#                    <td>Pending</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <th scope="row">6</th>#}
+{#                    <td>Digital Logic Design</td>#}
+{#                    <td>cse-2323</td>#}
+{#                    <td class="text-center">3</td>#}
+{##}
+{#                    <td></td>#}
+{#                    <td>Pending</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <th scope="row">7</th>#}
+{#                    <td>Digital Logic Design lab</td>#}
+{#                    <td>cse-2324</td>#}
+{#                    <td class="text-center">1.5</td>#}
+{##}
+{#                    <td></td>#}
+{#                    <td>Pending</td>#}
+{#                </tr>#}
                 </tbody>
             </table>
 

@@ -1,19 +1,17 @@
 from django.contrib import admin
 
-# Register your models here.
-from reg_app.models import CourseRegistration, CourseEnroll
 
-from .models import Student
+from .models import StudentRegistration, CourseEnroll
 
-
-@admin.register(Student)
-class StudentAdmin(admin.ModelAdmin):
-    list_filter = ('id', 'st_id',)
-    list_display = ('st_id',)
+# 
+# @admin.register(Student)
+# class StudentAdmin(admin.ModelAdmin):
+#     list_filter = ('id', 'st_id',)
+#     list_display = ('st_id',)
 
 
-@admin.register(CourseRegistration)
-class CourseRegistrationAdmin(admin.ModelAdmin):
+@admin.register(StudentRegistration)
+class StudentRegistrationAdmin(admin.ModelAdmin):
     list_filter = ('id', 'st_id',)
     list_display = ('st_id',)
 

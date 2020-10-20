@@ -1,24 +1,24 @@
 from django.db import models
 
+#
+# class Student(models.Model):
+#     st_id = models.CharField(max_length=20, null=False, blank=False, unique=True)
 
-class Student(models.Model):
-    st_id = models.CharField(max_length=20, null=False, blank=False, unique=True)
-    password = models.CharField(max_length=50)
 
-
-class CourseRegistration(models.Model):
+class StudentRegistration(models.Model):
     TYPE = (
         ('REGULAR', 'REGULAR'),
         ('RETAKE', 'RETAKE'),
     )
 
-    stu_name = models.CharField(max_length=30)
+    stu_name = models.CharField(max_length=30, null=True, blank=True)
     st_id = models.CharField(max_length=20, null=False, blank=False)
-    stu_type = models.CharField(max_length=30, choices=TYPE, default=TYPE[0])
-    department = models.CharField(max_length=20, null=False, blank=False)
-    semester = models.CharField(max_length=20, null=False, blank=False)
-    semester_name = models.CharField(max_length=20, null=False, blank=False)
-    credit = models.CharField(max_length=20, null=False, blank=False)
+    password = models.CharField(max_length=50)
+    stu_type = models.CharField(max_length=30, null=True, blank=True, choices=TYPE, default=TYPE[0])
+    department = models.CharField(max_length=20, null=True, blank=True)
+    semester = models.CharField(max_length=20, null=True, blank=True)
+    semester_name = models.CharField(max_length=20, null=True, blank=True)
+    credit = models.CharField(max_length=20, null=True, blank=True)
 
 
 class CourseEnroll(models.Model):
@@ -26,7 +26,7 @@ class CourseEnroll(models.Model):
         ('REGULAR', 'REGULAR'),
         ('RETAKE', 'RETAKE'),
     )
-    student = models.ForeignKey(CourseRegistration, on_delete=models.CASCADE)
+    student = models.ForeignKey(StudentRegistration, on_delete=models.CASCADE)
     course_name = models.CharField(max_length=20, null=False, blank=False)
     course_code = models.CharField(max_length=20, null=False, blank=False)
     credit_hour = models.CharField(max_length=20, null=False, blank=False)
