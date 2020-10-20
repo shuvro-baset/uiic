@@ -12,7 +12,7 @@ class StudentRegistration(models.Model):
     )
 
     stu_name = models.CharField(max_length=30, null=True, blank=True)
-    st_id = models.CharField(max_length=20, null=False, blank=False)
+    st_id = models.CharField(max_length=20, unique=True, null=False, blank=False)
     password = models.CharField(max_length=50)
     stu_type = models.CharField(max_length=30, null=True, blank=True, choices=TYPE, default=TYPE[0])
     department = models.CharField(max_length=20, null=True, blank=True)

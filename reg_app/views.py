@@ -15,9 +15,20 @@ class LogView(View):
     template_name = 'login.html'
 
     def post(self, request):
-        form = CreateStuForm(request.POST)
-        if form.is_valid():
-            form.save()
+        # form = CreateStuForm(request.POST)
+        # if form.is_valid():
+        #     form.save()
+        st_id = request.POST.get('st_id')
+        is_st = StudentRegistration.objects.filter(st_id=st_id).exists()
+        if is_st:
+            message = 'Please enter different id'
+            context = {'message': message}
+            return render(request, self.template_name, context)
+        password = request.POST.get('password')
+
+        student = StudentRegistration(st_id=st_id, password=password, )
+        student.save()
+
         return redirect('/home')
 
     def get(self, request):
