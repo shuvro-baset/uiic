@@ -27,7 +27,7 @@ class CourseEnroll(models.Model):
         ('RETAKE', 'RETAKE'),
     )
     student = models.ForeignKey(StudentRegistration, on_delete=models.CASCADE)
-    course_name = models.CharField(max_length=20, null=False, blank=False)
+    course_name = models.CharField(max_length=30, null=False, blank=False)
     course_code = models.CharField(max_length=20, null=False, blank=False)
     credit_hour = models.CharField(max_length=20, null=False, blank=False)
     status = models.CharField(max_length=30, choices=STATUS, default=STATUS[0])

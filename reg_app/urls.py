@@ -6,6 +6,6 @@ urlpatterns = [
     path('home', views.HomeView.as_view(), name='home'),
     path('', views.LogView.as_view(), name='log'),
     path('course-registration/', views.CourseRegView.as_view(), name='course_registration'),
-    path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
+    path('dashboard/<str:stu_id>', views.DashboardView.as_view(), name='dashboard'),
 
 ]

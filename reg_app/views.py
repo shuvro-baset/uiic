@@ -1,11 +1,16 @@
+import pydoc
+
+from django.conf import settings
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import TemplateView
+from io import StringIO
 
 from .forms import CreateStuForm
 from .models import CourseEnroll, StudentRegistration
+from django.core.mail import EmailMessage
 
 
 class HomeView(TemplateView):
@@ -41,6 +46,9 @@ class CourseRegView(View):
     def post(self, request):
         st = request.session['user']
         st_ins = StudentRegistration.objects.filter(id=st).first()
+
+        course_enroll_ins = CourseEnroll.objects.filter(student=st_ins.id).first()
+        print(course_enroll_ins)
         if not st_ins:
             return redirect('/home')
 
@@ -95,11 +103,24 @@ class CourseRegView(View):
                                            status=request.POST.get('prg_status'))
                 enroll_ins7.save()
         print(courses)
-        # return redirect('/home')
-        enroll_ins = CourseEnroll.objects.filter(student=st_ins.id).all()
-        context = {'st_ins': st_ins, 'enroll_ins': enroll_ins}
+        # enroll_ins = CourseEnroll.objects.filter(student=st_ins.id).all()
+        # # context = {'st_ins': st_ins, 'enroll_ins': enroll_ins}
+        # from io import BytesIO
+        # from reportlab.pdfgen import canvas
+        # attachment_doc_file = StringIO
+        # writer = (attachment_doc_file)
+        # buffer = BytesIO()
+        # p = canvas.Canvas(attachment_doc_file)
+        # p.drawString(100, 100, 'Hello world.')
+        #
+        # send_mail = EmailMessage(subject='New student course enroll', from_email=settings.EMAIL_HOST_USER,
+        #                          to=['md.abdul.baset75@gmail.com'])
+        # send_mail.attach(filename='New student course enroll.pdf', content=attachment_doc_file.getvalue,
+        #                  mimetype="application/*")
+        # # send_mail.content_subtype = "html"
+        # send_mail.send()
 
-        return render(request, 'dashboard.html', context)
+        return redirect('/dashboard/<str:stu_id>')
 
     def get(self, request):
         if 'user' in request.session:
@@ -109,8 +130,23 @@ class CourseRegView(View):
             print(st_ins)
             if not st_ins:
                 return redirect('/home')
-        return render(request, self.template_name)
+        return render(request, self.template_name, context={"st_ins": st_ins})
 
 
 class DashboardView(TemplateView):
     template_name = 'dashboard.html'
+
+    def get(self, request, stu_id):
+        if 'user' in request.session:
+            st = request.session['user']
+
+            st_ins = StudentRegistration.objects.filter(id=st).first()
+            stu_id = st_ins.st_id
+            print(stu_id)
+            enroll_ins = CourseEnroll.objects.filter(student=st_ins.id).all()
+            print(st)
+            print(st_ins)
+            if not st_ins:
+                return redirect('/home')
+            context = {'st_ins': st_ins, 'enroll_ins': enroll_ins}
+            return render(request, self.template_name, context=context)

@@ -39,7 +39,7 @@
                 <a class="nav-link" href="{% url 'reg_app:course_registration' %}">Course Regestration</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="{% url 'reg_app:dashboard' %}">DashBoard</a>
+                <a class="nav-link " href="{% url 'reg_app:dashboard' st_ins.st_id %}">DashBoard</a>
             </li>
         </ul>
 
@@ -132,67 +132,13 @@
 
                         <td>{{ enroll.status }}</td>
                         {% if enroll.remarks is True %}
-                            <td>Success</td>
+                            <td class="text-success">Success</td>
                         {% else %}
-                            <td>Pending</td>
+                            <td class="text-warning">Pending</td>
 
                         {% endif %}
                     </tr>
                 {% endfor %}
-                {#                <tr>#}
-                {#                    <th scope="row">2</th>#}
-                {#                    <td>Computer Programing lab-1</td>#}
-                {#                    <td>CSE-1122</td>#}
-                {#                    <td class="text-center">1.5</td>#}
-                {##}
-                {#                    <td></td>#}
-                {#                    <td>Pending</td>#}
-                {#                </tr>#}
-                {#                <tr>#}
-                {#                    <th scope="row">3</th>#}
-                {#                    <td>Sciences of Quran Hadith</td>#}
-                {#                    <td>URED-2302</td>#}
-                {#                    <td class="text-center">1</td>#}
-                {##}
-                {#                    <td></td>#}
-                {#                    <td>Pending</td>#}
-                {#                </tr>#}
-                {#                <tr>#}
-                {#                    <th scope="row">4</th>#}
-                {#                    <td>Data Structure</td>#}
-                {#                    <td>cse-2321</td>#}
-                {#                    <td class="text-center">3</td>#}
-                {##}
-                {#                    <td></td>#}
-                {#                    <td>Pending</td>#}
-                {#                </tr>#}
-                {#                <tr>#}
-                {#                    <th scope="row">5</th>#}
-                {#                    <td>Data Structure lab</td>#}
-                {#                    <td>cse-2322</td>#}
-                {#                    <td class="text-center">1</td>#}
-                {##}
-                {#                    <td></td>#}
-                {#                    <td>Pending</td>#}
-                {#                </tr>#}
-                {#                <tr>#}
-                {#                    <th scope="row">6</th>#}
-                {#                    <td>Digital Logic Design</td>#}
-                {#                    <td>cse-2323</td>#}
-                {#                    <td class="text-center">3</td>#}
-                {##}
-                {#                    <td></td>#}
-                {#                    <td>Pending</td>#}
-                {#                </tr>#}
-                {#                <tr>#}
-                {#                    <th scope="row">7</th>#}
-                {#                    <td>Digital Logic Design lab</td>#}
-                {#                    <td>cse-2324</td>#}
-                {#                    <td class="text-center">1.5</td>#}
-                {##}
-                {#                    <td></td>#}
-                {#                    <td>Pending</td>#}
-                {#                </tr>#}
                 </tbody>
             </table>
 
