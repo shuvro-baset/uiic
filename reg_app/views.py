@@ -95,6 +95,7 @@ class CourseRegView(View):
         st_ins.stu_name = stu_name
         st_ins.st_id = st_id
         st_ins.stu_type = stu_type.upper()
+        print("student type: ",st_ins.stu_type)
         st_ins.department = department
         st_ins.semester = semester
         st_ins.semester_name = semester_name
