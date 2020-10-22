@@ -26,7 +26,7 @@ class HomeView(TemplateView):
             print("st", st)
             print(st_ins)
             request.session._mutable = True
-            # request.session['user'] = st_ins.id
+            # request.session['user'] = st
 
             st = request.session['user']
 
@@ -60,6 +60,9 @@ class LogView(View):
 
             st = request.session['user']
             st_ins = StudentRegistration.objects.filter(id=st).first()
+            student = StudentRegistration.objects.filter(st_id=st_id).first()
+            request.session._mutable = True
+            request.session['user'] = student.id
 
             print(request.session['user'])
             return redirect('/home')
