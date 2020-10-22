@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Reset Password</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -91,7 +91,7 @@
             <div class="d-flex justify-content-center">
 
 
-                <h3 id="form-title">LOGIN</h3>
+                <h3 id="form-title">Reset Password</h3>
             </div>
             <div class="d-flex justify-content-center form_container">
                 <form method="POST" action="">
@@ -99,11 +99,11 @@
                     {{ form }}
 
                     <div class="input-group mb-3">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        </div>
-                        <input type="number" required  pattern="[1-9]{1}[0-9]{5}" maxlength="6" name="st_id" placeholder="Enter your 6 digit id"
-                               class="form-control">
+{#                        <div class="input-group-append">#}
+{#                            <span class="input-group-text"><i class="fas fa-user"></i></span>#}
+{#                        </div>#}
+{#                        <input type="number" required  pattern="[1-9]{1}[0-9]{5}" maxlength="6" name="st_id" placeholder="Enter your 6 digit id"#}
+{#                               class="form-control">#}
                     </div>
 
                     <div class="input-group mb-2">
@@ -114,12 +114,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center mt-3 login_container">
-                        <input class="btn login_btn" type="submit" value="Login">
-                    </div>
-                    <div class="d-flex justify-content-center mt-3 login_container">
-                        <a href="{% url 'reg_app:forget_pass' %}">
-                            <button type="button" class="btn btn-lg btn-warning">Forget-password</button>
-                        </a>
+                        <input class="btn login_btn" type="submit" value="reset-password">
                     </div>
                     {% if message %}
                         {{ message }}

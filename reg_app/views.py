@@ -16,25 +16,53 @@ from django.core.mail import EmailMessage
 class HomeView(TemplateView):
     template_name = 'home.html'
 
+    def get(self, request):
+        print("I am here now")
+        if 'user' in request.session:
+            st = request.session['user']
+
+            st_ins = StudentRegistration.objects.filter(id=st).exists()
+
+            print("st", st)
+            print(st_ins)
+            request.session._mutable = True
+            # request.session['user'] = st_ins.id
+
+            st = request.session['user']
+
+            context = {'st_ins': st_ins, 'st': st}
+            return render(request, self.template_name, context=context)
+
 
 class LogView(View):
     template_name = 'login.html'
 
     def post(self, request):
         st_id = request.POST.get('st_id')
-        is_st = StudentRegistration.objects.filter(st_id=st_id).exists()
-        if is_st:
-            message = 'Please enter different id'
-            context = {'message': message}
-            return render(request, self.template_name, context)
         password = request.POST.get('password')
 
-        student = StudentRegistration(st_id=st_id, password=password, )
-        student.save()
-        request.session._mutable = True
-        request.session['user'] = student.id
-        print(request.session['user'])
-        return redirect('/home')
+        is_st = StudentRegistration.objects.filter(st_id=st_id, password=password).exists()
+        print(is_st)
+
+        if is_st:
+
+            student = StudentRegistration.objects.filter(st_id=st_id).first()
+            request.session._mutable = True
+            request.session['user'] = student.id
+            print("logged in successfully")
+            return redirect('/home')
+        else:
+
+            student = StudentRegistration(st_id=st_id, password=password, )
+            student.save()
+            request.session._mutable = True
+            request.session['user'] = student.id
+
+            st = request.session['user']
+            st_ins = StudentRegistration.objects.filter(id=st).first()
+
+            print(request.session['user'])
+            return redirect('/home')
 
     def get(self, request):
         return render(request, self.template_name)
@@ -129,6 +157,7 @@ class CourseRegView(View):
             print(st)
             print(st_ins)
             if not st_ins:
+                print("I returend from here.")
                 return redirect('/home')
         return render(request, self.template_name, context={"st_ins": st_ins})
 
@@ -150,3 +179,46 @@ class DashboardView(TemplateView):
                 return redirect('/home')
             context = {'st_ins': st_ins, 'enroll_ins': enroll_ins}
             return render(request, self.template_name, context=context)
+
+
+class ForgetPass(View):
+    template_name = 'forget_pass.html'
+
+    def post(self, request):
+        st_id = request.POST.get('st_id')
+        print("student: ", st_id)
+
+        is_st = StudentRegistration.objects.filter(st_id=st_id).exists()
+        print(is_st)
+
+        if not is_st:
+            message = 'Please enter your correct id'
+            context = {'message': message}
+            return render(request, self.template_name, context)
+        else:
+            student = StudentRegistration.objects.filter(st_id=st_id).first()
+            request.session._mutable = True
+            request.session['user'] = student.id
+            return redirect('/reset-password')
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+
+class ResetPass(View):
+    template_name = 'reset_pass.html'
+
+    def post(self, request):
+        st = request.session['user']
+        print(st)
+        st_ins = StudentRegistration.objects.filter(id=st).first()
+        print('st_ins', st_ins)
+        password = request.POST.get('password')
+        print('password', password)
+        st_ins.password = password
+        st_ins.save()
+
+        return redirect('/home')
+
+    def get(self, request):
+        return render(request, self.template_name)
