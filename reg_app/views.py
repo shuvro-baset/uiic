@@ -7,6 +7,10 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import TemplateView
 from io import StringIO
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 from .forms import CreateStuForm
 from .models import CourseEnroll, StudentRegistration
@@ -95,7 +99,7 @@ class CourseRegView(View):
         st_ins.stu_name = stu_name
         st_ins.st_id = st_id
         st_ins.stu_type = stu_type.upper()
-        print("student type: ",st_ins.stu_type)
+        print("student type: ", st_ins.stu_type)
         st_ins.department = department
         st_ins.semester = semester
         st_ins.semester_name = semester_name
@@ -104,6 +108,7 @@ class CourseRegView(View):
         st_ins.save()
         # course enroll info
         courses = request.POST.getlist('subjects')
+        print(courses)
         for data in courses:
             if data == 'Chemistry':
                 enroll_ins1 = CourseEnroll(student=st_ins, course_name=data, course_code='CHEM-2301',
@@ -135,22 +140,19 @@ class CourseRegView(View):
                                            status=request.POST.get('prg_status'))
                 enroll_ins7.save()
         print(courses)
-        # enroll_ins = CourseEnroll.objects.filter(student=st_ins.id).all()
-        # # context = {'st_ins': st_ins, 'enroll_ins': enroll_ins}
-        # from io import BytesIO
-        # from reportlab.pdfgen import canvas
-        # attachment_doc_file = StringIO
-        # writer = (attachment_doc_file)
-        # buffer = BytesIO()
-        # p = canvas.Canvas(attachment_doc_file)
-        # p.drawString(100, 100, 'Hello world.')
-        #
-        # send_mail = EmailMessage(subject='New student course enroll', from_email=settings.EMAIL_HOST_USER,
-        #                          to=['md.abdul.baset75@gmail.com'])
-        # send_mail.attach(filename='New student course enroll.pdf', content=attachment_doc_file.getvalue,
-        #                  mimetype="application/*")
-        # # send_mail.content_subtype = "html"
-        # send_mail.send()
+        enroll_ins = CourseEnroll.objects.filter(student=st_ins.id).all()
+
+        message = "Student Id: " + st_id + "."\
+                    "Student Name: " + stu_name + "."\
+                    "Department: " + department + "."\
+                    "Semester: " + semester + "." \
+               " has applied for semester registration. Please review it soon."
+
+        subject = 'Student Enroll Mail'
+        to = 'k.fatima172000@gmail.com'
+        email = EmailMessage(subject, message, settings.EMAIL_HOST_USER, [to])
+        email.content_subtype = 'html'
+        email.send()
 
         return redirect('/dashboard/<str:stu_id>')
 
